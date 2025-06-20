@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🚗 Parking Management System</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    </header>
+
+    <div class="container">
+        <div class="dashboard">
+            <section class="live-feed">
+                <div class="camera-feed">
+                    <div class="grid-overlay"></div>
+                    <span class="processing-badge">Processing</span>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-pause" onclick="togglePause()">🔴 Pause</button>
+                    <button class="btn btn-grid" onclick="toggleGrid()">🔵 Hide Grid</button>
+                </div>
+                <div class="source">
+                    Source: 
+                    <span class="badge badge-selected" onclick="toggleSource(this)">Recorded</span>
+                    <span class="badge" onclick="toggleSource(this)">Live</span>
+                </div>
+            </section>
+
+            <section class="info-panel">
+                <div class="card parking-overview">
+                    <h2>Parking Overview</h2>
+                    <div class="space-info">
+                        <div class="space-item available">
+                            <span class="icon">🟢</span>
+                            <span class="label">Available Spaces:</span>
+                            <span class="value">--</span> <!-- Updated via JS -->
+                        </div>
+                        <div class="space-item occupied">
+                            <span class="icon">🔴</span>
+                            <span class="label">Occupied Spaces:</span>
+                            <span class="value">--</span> <!-- Updated via JS -->
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%"></div> <!-- Updated via JS -->
+                    </div>
+                    <p class="occupancy-rate">-- Occupancy Rate</p> <!-- Updated via JS -->
+                </div>                      
+
+                <div class="card recent-vehicles">
+                    <h2>Recent Vehicles</h2>
+                    <div class="vehicle-list" id="vehicleList">
+                        <!-- Vehicle items will be added dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="charts">
+                <div class="chart-container">
+                    <h2>Vehicles Over Time</h2>
+                    <canvas id="vehiclesOverTime"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Vehicles In/Out</h2>
+                    <canvas id="vehiclesInOut"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html> 
